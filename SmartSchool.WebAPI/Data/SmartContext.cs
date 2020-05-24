@@ -19,8 +19,9 @@ namespace SmartSchool.WebAPI.Data
             builder.Entity<AlunoDisciplina>()
                 .HasKey(AD => new { AD.AlunoId, AD.DisciplinaId });
 
+/*
             builder.Entity<Professor>()
-                            .HasData(new List<Professor>(){
+                .HasData(new List<Professor>(){
                     new Professor(1, "Lauro"),
                     new Professor(2, "Roberto"),
                     new Professor(3, "Ronaldo"),
@@ -74,6 +75,7 @@ namespace SmartSchool.WebAPI.Data
                     new AlunoDisciplina() {AlunoId = 7, DisciplinaId = 4 },
                     new AlunoDisciplina() {AlunoId = 7, DisciplinaId = 5 }
                 });
+*/
 
 //            builder.Entity<AlunoCurso>()
 //                .HasKey(AD => new { AD.AlunoId, AD.CursoId });

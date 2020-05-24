@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SmartSchool.WebAPI.Data;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace SmartSchool.WebAPI
 {
@@ -30,7 +31,15 @@ namespace SmartSchool.WebAPI
             services.AddDbContext<SmartContext>(
                 context => context.UseSqlServer(Configuration.GetConnectionString("default"))
             );
-            services.AddControllers();
+
+//            services.AddSingleton<IRepository, Repository>();
+//            services.AddTransient<IRepository, Repository>();
+            services.AddScoped<IRepository, Repository>();
+
+            services.AddControllers()
+                .AddNewtonsoftJson(
+                    opt => opt.SerializerSettings.ReferenceLoopHandling =
+                        Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
